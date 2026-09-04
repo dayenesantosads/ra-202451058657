@@ -14,7 +14,7 @@ Vocês são o time de arquitetura de dados contratado pelas 4 empresas abaixo. P
 
 *⏱️ Tempo: 25 minutos  |  👥 Formato: em duplas  |  Não existe resposta única — o que vale é a justificativa.*
 
-> **Nomes:** ____________________   **Turma:** ____________________   **Data:** ___ / ___ / ______
+> **Nomes:** Dayene dos Santos Rosa - Luiz Felipe Vieira de Paula | **Turma:** GNP0547 - 3001  | **Data:** 03 / 09 / 2026
 
 ## CENÁRIO 01 — TechStore — o catálogo camaleão
 
@@ -27,11 +27,15 @@ E-commerce com 80 mil produtos. Cada categoria tem atributos completamente difer
 
 **Sua análise:**
 
-1. Modelo recomendado:   ☐ Relacional     ☐ Documento     ☐ Chave-valor     ☐ Grafo
+1. Modelo recomendado:   ☐ Relacional     x Documento     ☐ Chave-valor     ☐ Grafo
+   - Modelo Documento
 
 2. Justificativa (mínimo 2 fatores do contexto):
+   - Estrutura de dados flexiveis para futuras atualizações e incrementações
+   - Evita alteração em toda a estrutura ao adicionar um atributo específico em um item
 
 3. Principal risco da escolha:
+   - Inconsistências e complexidade de busca ou filtragem de algum dado específico.
 
 ## CENÁRIO 02 — MegaCart — o carrinho da Black Friday
 
@@ -44,11 +48,15 @@ Serviço de carrinho de compras de um varejista gigante. Na Black Friday são mi
 
 **Sua análise:**
 
-1. Modelo recomendado:   ☐ Relacional     ☐ Documento     ☐ Chave-valor     ☐ Grafo
+1. Modelo recomendado:   ☐ Relacional     ☐ Documento     x Chave-valor     ☐ Grafo
+   - Modelo Chave-valor
 
 2. Justificativa (mínimo 2 fatores do contexto):
+   - Busca direcionada/específica através de palavras chaves ou id's.
+   - É o melhor modelo se tratando de sessões, velocidade de busca e armazenamento temporario de dados.
 
 3. Principal risco da escolha:
+   - É a sua limitação para consultas complexas e relacionamentos
 
 ## CENÁRIO 03 — PayBank — dinheiro não pode evaporar
 
@@ -61,11 +69,15 @@ Módulo de transferências de um banco. Uma transferência debita uma conta e cr
 
 **Sua análise:**
 
-1. Modelo recomendado:   ☐ Relacional     ☐ Documento     ☐ Chave-valor     ☐ Grafo
+1. Modelo recomendado:   x Relacional     ☐ Documento     ☐ Chave-valor     ☐ Grafo
+   - Modelo relacional ACID
 
 2. Justificativa (mínimo 2 fatores do contexto):
+   - Utilização do modelo ACID para assertividade das transações necessárias e em caso de falha, que ela seja revertida antes de gerar problemas.
+   - Consistência nas transações e estabilidade para que não haja movimentações paralelas, gerando maior segurança ao sistema.
 
 3. Principal risco da escolha:
+   - Maior dificuldade de aplicar de mudanças e alto custo de escalabilidade
 
 ## CENÁRIO 04 — FriendLink — amigos dos seus amigos
 
@@ -78,12 +90,16 @@ Rede social profissional em que o produto principal é a indicação: “pessoas
 
 **Sua análise:**
 
-1. Modelo recomendado:   ☐ Relacional     ☐ Documento     ☐ Chave-valor     ☐ Grafo
-
+1. Modelo recomendado:   ☐ Relacional     ☐ Documento     ☐ Chave-valor     x Grafo
+    - Modelo Grafo
 2. Justificativa (mínimo 2 fatores do contexto):
-
+    -  Foca nos relacionamentos e conexões dos dados e não nos atributos
+    - Facilidade para percorrer vários relacionamentos
 3. Principal risco da escolha:
+   - Maior complexidade de manutenção conforme a escalabilidade de dados
 
 ## DESAFIO
 
 1. Escolha um dos cenários e responda: se a rede particionar (metade dos servidores não enxerga a outra metade), o que o sistema deve fazer — parar de responder para não errar, ou continuar respondendo mesmo arriscando dados desatualizados? Qual letra do CAP vocês sacrificariam e por quê?
+   - CENÁRIO 03 — PayBank — dinheiro não pode evaporar, nesse cenário o sistema deve parar de responder para não errar.
+   - Sacrificaria a letra A (Availability - sistema sempre responde), para evitar a efetivação de uma transação incorretamente por inconsistencias no sistema.
