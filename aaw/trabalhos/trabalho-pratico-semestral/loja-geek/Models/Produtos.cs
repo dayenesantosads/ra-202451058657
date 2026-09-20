@@ -2,13 +2,13 @@ namespace loja_geek.Models;
 
 public class Produto
 {
-  public string Id { get; set; }
-  public string Nome { get; set; }
-  public string Descricao { get; set; }
-  public string Categoria { get; set; }
-  public decimal Preco { get; set; }
-  public int Estoque { get; set; }
-  public string ImagemUrl { get; set; }
-  public DateTime CriadoEm { get; set; }
+  public string id { get; set; }
+  public string nome { get; set; }
+  public string descricao { get; set; }
+  public string categoria { get; set; }
+  public decimal preco { get; set; }
+  public int estoque { get; set; }
+  public string imagemUrl { get; set; }
+  public DateTime criadoEm { get; set; }
 
 }
